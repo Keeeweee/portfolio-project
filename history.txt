@@ -1,0 +1,500 @@
+   60  git remote set-url origin git@epsilonmajorquezero.com:web.git
+   61  git push origin master
+   62  git push origin master
+   63  ls
+   64  git remote -v
+   65  git branch -a
+   66  git checkout -b develop
+   67  git branch -a
+   68  ssh kiwi@epsilonmajorquezero.com
+   69  git config --global user.name "Kiwi"
+   70  git config --global user.email "epsilonmajorquezero@gmail.com"
+   71  git config --list
+   72  ssh kiwi@epsilonmajorquezero.com
+   73  ports -v
+   74  port
+   75  psql
+   76  sudo su - postgres
+   77  sudo port install python-pip python-dev libpq-dev postgresql postgresql-contrib nginx
+   78  sudo port install python3
+   79  sudo port install python
+   80  sudo port update
+   81  port -v
+   82  man port
+   83  xcode-select --install
+   84  sudo port -v selfupdate
+   85  ls -a
+   86  nano .bash_profile
+   87  sudo port install python3
+   88  sudo port install python36
+   89  sudo port select --set python python36
+   90  python -v
+   91  python --v
+   92  man python
+   93  python -V
+   94  sudo port install py36-pip
+   95  port select --set pip pip36
+   96  sudo port select --set pip pip36
+   97  pip list --outdated
+   98  sudo port install postgresql
+   99  sudo port install postgresql103-server
+  100  sudo port install postgresql96-server
+  101  sudo -u postgres psql
+  102  psql
+  103  psql
+  104  source .bash_profile
+  105  ls
+  106  psql
+  107  man mkdir
+  108  cd /opt/local/var/db/
+  109  ls
+  110  mkdir -p postgresql96/webdb
+  111  sudo mkdir -p postgresql96/webdb
+  112  ls
+  113  sudo chown postres:postgres postgresql96/webdb/
+  114  sudo chown postgres:postgres postgresql96/webdb/
+  115  sudo su postgres -c '/opt/local/lib/postgresql96/bin/initdb -D /opt/local/var/db/postgresql96/webdb'
+  116  psql
+  117  ls
+  118  sudo rm -r postgresql96
+  119  ls
+  120  cd ~
+  121  sudo port uninstall postgresql96-server
+  122  sudo port install postgresql96
+  123  sudo port install postgresql96-server
+  124  sudo mkdir -p /opt/local/var/db/postgresql96/webdb
+  125  sudo chown postgres:postgres /opt/local/var/db/postgresql96/webdb
+  126  sudo su postgres -c '/opt/local/lib/postgresql96/bin/initdb -D /opt/local/var/db/postgresql96/webdb'
+  127  nano .bash_profile
+  128  source .bash_profile
+  129  postgres_start
+  130  source .bash_profile
+  131  nano .bash_profile
+  132  udo mkdir -p /opt/local/var/db/postgresql96/defaultdb
+  133  sudo mkdir -p /opt/local/var/db/postgresql96/defaultdb
+  134  sudo chown postgres:postgres /opt/local/var/db/postgresql96/defaultdb
+  135  sudo su postgres -c '/opt/local/lib/postgresql96/bin/initdb -D /opt/local/var/db/postgresql96/defaultdb'
+  136  postgres_start 
+  137  sudo port install psql
+  138  psql
+  139  sudo -u postgres psql
+  140  locate psql | grep /bin
+  141  sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+  142  locate psql | grep /bin
+  143  which python
+  144  which python3
+  145  cd /usr/bin/
+  146  ls
+  147  ls | grep python
+  148  ls -l | grep python
+  149  cd python
+  150  ls
+  151  ls -l | grep python
+  152  cat python
+  153  pip --version
+  154  python --version
+  155  sudo port uninstall python27
+  156  python --version
+  157  sudo port uninstall python36
+  158  sudo port select --set python python36
+  159  python --version
+  160  python3 --version
+  161  sudo rm -rf /Library/Frameworks/Python.framework/Versions/2.7
+  162  sudo rm -rf "/Applications/Python 2.7"
+  163  cd /usr/local/bin/
+  164  ls -l /usr/local/bin | grep '../Library/Frameworks/Python.framework/Versions/2.7' | awk '{print $9}' | tr -d @ | xargs rm
+  165  cd ~~
+  166  cd ~
+  167  ls
+  168  nano .bash_profile
+  169  python --version
+  170  python -V
+  171  sudo port uninstall pip
+  172  sudo port uninstall pip36
+  173  port list
+  174  port list installed
+  175  port uninstall py36-pip
+  176   sudo port uninstall py36-pip
+  177  port list installed
+  178   sudo port uninstall python36
+  179  port uninstall py36-setuptools
+  180  sudo port uninstall py36-setuptools
+  181   sudo port uninstall python36
+  182  sudo port install python36
+  183  sudo port select --set python python36
+  184  python -V
+  185  sudo port select --set python3 python36
+  186  python3 -V
+  187  python -V
+  188  sudo port install py36-pip
+  189  port select --set pip pip36
+  190  sudo port select --set pip pip36
+  191  sudo port select --set pip3 pip36
+  192  pip install virtualenv
+  193  pip uninstall virtualenv
+  194  sudo pip uninstall virtualenv
+  195  sudo pip install virtualenv
+  196  pip -V
+  197  virtualenv -V
+  198  man virtualenv
+  199  cd workspace/web/
+  200  ls
+  201  rm -r webenv/
+  202  ls
+  203  virtualenv webenv
+  204  source webenv/bin/activate
+  205  python -V
+  206  which python
+  207  deactivate
+  208  which python
+  209  which python3
+  210  rm -r webenv/
+  211  virtualenv -p /opt/local/bin/python3 webenv
+  212  source webenv/bin/activate
+  213  python -V
+  214  pip -V
+  215  pip install django gunicorn psycopg2
+  216  ls
+  217  cd ..
+  218  ls
+  219  nano web/web/settings.py 
+  220  nano web/web/settings.py 
+  221  ls
+  222  ls -a
+  223  nano .bash_profile
+  224  nano history
+  225  history
+  226  ps aux
+  227  free -h
+  228  psql
+  229  locate psql | grep /bin
+  230  sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+  231  locate psql | grep /bin
+  232  rm -r /Library/PostgreSQL/10/bin/psql
+  233  sudo rm -r /Library/PostgreSQL/10/bin/psql
+  234  locate psql | grep /bin
+  235  locate psql | grep /bin
+  236  cd /Library/PostgreSQL/
+  237  ls
+  238  sudo rm -r 
+  239  sudo rm -r /Library/PostgreSQL/
+  240  locate psql | grep /bin
+  241  cd /Library/
+  242  ls
+  243  locate psql | grep /bin
+  244  cd ~
+  245  ls
+  246  nano .bash_profile
+  247  source .bash_profile
+  248  psql
+  249  postgres_start 
+  250  psql -u postgres
+  251  psql -U postgres
+  252  sudo -u postgres createuser kiwi
+  253  psql
+  254  sudo -u postgres psql
+  255  psql -U postgres
+  256  psql -U kiwi
+  257  psql -U kiwi postgres
+  258  psql -U kiwi postgres
+  259  sudo -u postgres psql
+  260  touch /opt/local/var/db/postgresql96/.psql_history
+  261  sudo touch /opt/local/var/db/postgresql96/.psql_history
+  262  sudo -H pip install --upgrade pip
+  263  sudo -H pip install virtualenv
+  264  cd workspace/
+  265  cd web/
+  266  ls
+  267  virtualenv webenv
+  268  locate virtualenv | grep /bin
+  269  sudo /usr/bin/easy_install virtualenv webenv
+  270  cd ~
+  271  ls
+  272  nano .bash_profile
+  273  source .bash_profile
+  274  man virtualenv
+  275  source wevenv/bin/activate
+  276  cd workspace/web/
+  277  source wevenv/bin/activate
+  278  ls
+  279  man sudo
+  280  man easy_install
+  281  sudo su
+  282  sudo pip unsinstall virtualenv
+  283  sudo pip uninstall virtualenv
+  284  sudo -H pip uninstall virtualenv
+  285  sudo su
+  286  ls
+  287  virtualenv webenv
+  288  source webenv/bin/activate
+  289  pip -v
+  290  pip --version
+  291  locate pyhon2.7
+  292  locate python2.7
+  293  locate python2.7 | grep bin
+  294  locate python2.7 | grep /bin
+  295  locate python2.7 | grep /bin
+  296  deactivate
+  297  pip --version
+  298  pip install virtualenv
+  299  source webenv/bin/activate
+  300  pip3 --version
+  301  pip --version
+  302  locate virtualenv
+  303  locate virtualenv |grep /bin
+  304  locate virtualenv |grep 
+  305  locate virtualenv
+  306  python3 -m venv webenv
+  307  python -m venv webenv
+  308  which python
+  309  pip --version
+  310  deactivate
+  311  ls
+  312  source webenv/bin/activate
+  313  ls
+  314  [Unit]
+  315  Description=gunicorn daemon
+  316  sudo port install nginx
+  317  deacivate
+  318  deactivate
+  319  sudo port list installed
+  320  ls
+  321  cd workspace/
+  322  ls
+  323  cd web/
+  324  ls
+  325  source webenv/bin/activate
+  326  ls
+  327  python -v
+  328  python -V
+  329  python manage.py runserver
+  330  man django
+  331  python -v
+  332  python -V
+  333  python
+  334  python -V
+  335  which python
+  336  python -V
+  337  which python
+  338  sudo ports install php72
+  339  sudo port install php72
+  340  man django
+  341  django -v
+  342  history
+  343  history | grep django
+  344  sudo port django -v
+  345  sudo port selfupdate
+  346  sudo port upgrade outdated
+  347  sudo port list install
+  348  history | grep port
+  349  port list installed
+  350  python
+  351  ssh kiwi@epsilonmajorquezero.com
+  352  cd workspace/web/
+  353  ls
+  354  source webenv/bin/activate
+  355  manage.py makemigrations
+  356  ls
+  357  ~/myproject/manage.py makemigrations
+  358  python manage.py makemigrations
+  359  pip install psycopg2-binary
+  360  python manage.py makemigrations
+  361  python manage.py migrate
+  362  python manage.py createsuperuser
+  363  python manage.py collectstatic
+  364  python manage.py runserver 0.0.0.0:8000
+  365  cd ..
+  366  cd web/
+  367  ls
+  368  gunicorn --bind 0.0.0.0:8000 web.wsgi
+  369  deactivate
+  370  sudo nano /etc/systemd/system/gunicorn.service
+  371  sudo nano /etc/systemd/system/gunicorn.service
+  372  history 
+  373  python --version
+  374  ls
+  375  cd workspace/
+  376  ls
+  377  mkdir django_course
+  378  cd django_course/
+  379  man virtualenv
+  380  virtualenv -V
+  381  virtualenv -v
+  382  virtualenv -h
+  383  virtualenv -version
+  384  virtualenv --version
+  385  virtualenv course
+  386  source course/bin/activate
+  387  python -V
+  388  python3 -V
+  389  deactivate
+  390  ls
+  391  rm -r course/
+  392  ls
+  393  virtualenv -p /opt/local/bin/python3 course
+  394  source course/bin/activate
+  395  python -V
+  396  virtualenv -h
+  397  pip install django-2.0.2
+  398  pip install django==2.0.2
+  399  django-admin
+  400  ls
+  401  cd course/
+  402  ls
+  403  cd bin
+  404  ls
+  405  cd ..
+  406  cd ..
+  407  deactivate
+  408  ls
+  409  rm -r course/
+  410  virtualenv -p /opt/local/bin/python3 courseenv
+  411  source courseenv/bin/activate
+  412  ls
+  413  pip django=2.0.2
+  414  pip install django=2.0.2
+  415  pip install django==2.0.2
+  416  django-admin startproject wordcount
+  417  ls
+  418  cd wordcount/
+  419  python manage.py runserver
+  420  python manage.py runserver
+  421  python manage.py runserver
+  422  python manage.py runserver
+  423  python manage migrate
+  424  python manage.py migrate
+  425  python manage.py runserver
+  426  ls
+  427  cd ..
+  428  ls
+  429  rm -r wordcount/
+  430  ls
+  431  python manage.py startproject wordcount
+  432  django_admin startproject wordcount
+  433  ls
+  434  django-admin startproject wordcount
+  435  ls
+  436  cd wordcount/
+  437  python manage.py runserver
+  438  ls
+  439  cd ..
+  440  ls
+  441  cd wordcount/
+  442  git init
+  443  git status
+  444  ls -la
+  445  cd .git
+  446  ls
+  447  touch .gitignore
+  448  nano .gitignore 
+  449  git status
+  450  cd ..
+  451  git status
+  452  cd git
+  453  cd .git
+  454  ls
+  455  ls -la
+  456  mv .gitignore ..
+  457  ls
+  458  cd ..
+  459  ls
+  460  ls -la
+  461  git status
+  462  nano .gitignore 
+  463  git status
+  464  nano .gitignore 
+  465  git status
+  466  git add -A
+  467  ls
+  468  git status
+  469  git rm -A
+  470  git unstage -A
+  471  git --help
+  472  git rm --help
+  473  git reset HEAD -- .
+  474  git status
+  475  nano .gitignore 
+  476  git add -A
+  477  git status
+  478  git commit -m "Initial commit"
+  479  git status
+  480  deactivate
+  481  cd ..
+  482  ls
+  483  source courseenv/bin/activate
+  484  mkdir portfolio
+  485  ls
+  486  cd portfolio/
+  487  ls
+  488  cd ..
+  489  rm portfolio/
+  490  rm -r portfolio/
+  491  ls
+  492  django-admin startproject portfolio
+  493  ls
+  494  cd portfolio/
+  495  ls
+  496  touch .gitignore
+  497  ls
+  498  ls -la
+  499  nano .gitignore 
+  500  nano .gitignore 
+  501  cd workspace/
+  502  ls
+  503  cd django_course/
+  504  ls
+  505  source courseenv/bin/activate
+  506  cd portfolio/
+  507  nano .gitignore 
+  508  ls
+  509  git init
+  510  git status
+  511  nano .gitignore 
+  512  git status
+  513  git add -A
+  514  git commit -m "Initial Commit"
+  515  git status
+  516  python manage.py run-server
+  517  python manage.py runserver
+  518  git ignore
+  519  git status
+  520  python manage.py runserver
+  521  ls
+  522  cd ..
+  523  ls
+  524  mv portfolio/ portfolio-project
+  525  ls
+  526  cd portfolio-project/
+  527  python manage.py startapp blog
+  528  ls
+  529  git status
+  530  git add -A
+  531  git commit -m "Add blog app"
+  532  python manage.py startapp jobs
+  533  git add -A
+  534  git status
+  535  git commit -m "Add jobs app"
+  536  python manage.py migrate
+  537  python manage.py makemigrations
+  538  pip install Pillow
+  539  python manage.py makemigrations
+  540  python manage.py makemigrations
+  541  python manage.py migrate
+  542  python manage.py migrate
+  543  python manage.py createsuperuser
+  544  python manage.py runserver
+  545  python manage.py makemigrations
+  546  python manage.py migrate
+  547  python manage.py runserver
+  548  which postgres
+  549  postgres
+  550  port list installed
+  551  sudo port load postgresql96
+  552  sudo port load postgresql96-server
+  553  posgresql
+  554  postgresql
+  555  postgres
+  556  history
+  557  history > history.txt
+  558* 
+  559  history > history.txt
