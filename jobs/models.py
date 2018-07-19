@@ -6,6 +6,7 @@ class Job(models.Model):
     image = models.ImageField(upload_to='images/')
     summary = models.TextField()
     title = models.TextField()
+    company = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.title
+        return self.company
