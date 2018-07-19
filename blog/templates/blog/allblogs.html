@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
+    {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Blog</title>
+    <title>Marc's Blog</title>
 
         <style type="text/css">
 
@@ -59,16 +60,16 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Marc Espín</a>
+        <a class="navbar-brand" href="{% url 'home' %}">Marc Espín</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link" href="#">Twitter</a>
-                <a class="nav-item nav-link" href="#">Resumee</a>
-                <a class="nav-item nav-link active" href="#">Blog</a>
+                <a class="nav-item nav-link" href="https://twitter.com/EpsilonKeewee">Twitter</a>
+                <a class="nav-item nav-link" href="{% static 'CV_EN_Apr2018.pdf' %}">Resumee</a>
+                <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
             </div>
         </div>
     </nav>
@@ -82,7 +83,7 @@
         <h2>Latest Posts</h2>
         <hr/>
         {% for blog in blogs.all %}
-            <a href="/blog/{{ blog.pk }}" ><h3>{{ blog.title }}</h3></a>
+            <a href="/blog/{{ blog.id }}" ><h3>{{ blog.title }}</h3></a>
             {{ blog.pub_date_pretty }}
             <br/>
             <img class="img-fluid" src="{{ blog.image.url }}" height="200" width="200"/>
