@@ -79,10 +79,10 @@
     <div class = "container">
         <h1 class="text-center pt-3">{{ blog.title|safe }}</h1>
         <p class="text-center">{{ blog.pub_date }}</p>
-        <img class="img-fluid" src="{{ blog.image.url }}"/>
+        <img class="rounded img-fluid" src="{{ blog.image.url }}"/>
         <br/>
         <br/>
-        <p class="border border-primary">{{ blog.body|safe }}</p>
+        <p class="rounded border border-dark px-2 py-2">{{ blog.body|linebreaks|safe }}</p>
     </div>
 
 </main>
