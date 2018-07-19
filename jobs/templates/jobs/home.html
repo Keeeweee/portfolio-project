@@ -96,7 +96,7 @@
                     <div class="card mb-4 box-shadow">
                         <img class="card-img-top" src="{{ job.image.url }}"/>
                         <div class="card-body">
-                            <p class="card-text">{{ job.summary }}</p>
+                            <p class="card-text">{{ job.summary|safe }}</p>
                         </div>
                     </div>
                 </div>
