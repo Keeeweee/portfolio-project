@@ -4,11 +4,9 @@ from .models import Game
 
 
 # Create your views here.
-
-
-def allGames(request):
+def allgames(request):
     games = Game.objects
-    return render(request, 'frasometre/allGames.html', {'games': games})
+    return render(request, 'frasometre/allgames.html', {'games': games})
 
 
 def game(request, game_id):
