@@ -67,8 +67,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link" href="https://twitter.com/EpsilonKeewee">Twitter</a>
-                <a class="nav-item nav-link" href="{% static 'CV_EN_Apr2018.pdf' %}">Resumee</a>
+                <a target="_blank" class="nav-item nav-link" href="https://twitter.com/EpsilonKeewee">Twitter</a>
+                <a target="_blank" class="nav-item nav-link" href="{% static 'CV_EN_Apr2018.pdf' %}">Resume</a>
                 <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
             </div>
         </div>
@@ -80,8 +80,7 @@
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading">Hi, I'm Marc!</h1>
-            <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator,
-                etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+            <p class="lead text-muted">Mathematician, Developer and Data Analyst. Also a part time Keewee.</p>
             <p>
                 <a href="mailto:epsilonmajorquezero@gmail.com" class="btn btn-primary my-2">Email Me</a>
             </p>
@@ -91,14 +90,13 @@
 
     <div class="album py-5 bg-light">
         <div class="container">
-
             <div class="row">
-                {% for job in jobs.all %}
+                {% for job in jobs.all|dictsortreversed:'id' %}
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
                         <img class="card-img-top" src="{{ job.image.url }}"/>
                         <div class="card-body">
-                            <p class="card-text">{{ job.summary }}</p>
+                            <p class="card-text text-justify">{{ job.summary|linebreaksbr|safe }}</p>
                         </div>
                     </div>
                 </div>

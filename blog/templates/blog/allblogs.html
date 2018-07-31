@@ -68,7 +68,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link" href="https://twitter.com/EpsilonKeewee">Twitter</a>
-                <a class="nav-item nav-link" href="{% static 'CV_EN_Apr2018.pdf' %}">Resumee</a>
+                <a class="nav-item nav-link" href="{% static 'CV_EN_Apr2018.pdf' %}">Resume</a>
                 <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
             </div>
         </div>
@@ -83,12 +83,12 @@
         <h2>Latest Posts</h2>
         <hr/>
         {% for blog in blogs.all %}
-            <a href="/blog/{{ blog.id }}" ><h3>{{ blog.title }}</h3></a>
+            <a href="/blog/{{ blog.id }}" ><h3>{{ blog.title|safe }}</h3></a>
             {{ blog.pub_date_pretty }}
             <br/>
-            <img class="img-fluid" src="{{ blog.image.url }}" height="200" width="200"/>
+            <img class="rounded img-fluid" src="{{ blog.image.url }}" height="200" width="200"/>
             <br/>
-            <p>{{ blog.summary }}</p>
+            <p>{{ blog.summary|safe }}</p>
             <br/>
         {% endfor %}
     </div>
