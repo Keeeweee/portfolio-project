@@ -100,7 +100,7 @@
                             <a href="/frasometre/game/{{ game.id }}" ><h3>{{ game.title }}</h3></a>
                             {{ game.pub_date_pretty }}
                             <hr/>
-                            <p class="card-text">{{ game.summary }}</p>
+                            <p class="card-text">{{ game.summary|linebreaksbr|safe }}</p>
                         </div>
                     </div>
                 </div>

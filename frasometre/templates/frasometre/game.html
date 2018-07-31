@@ -82,11 +82,11 @@
         <img class="img-fluid" src="{{ game.image.url }}"/>
         <br/>
         <br/>
-        <p>{{ game.summary.body }}</p>
+        <p>{{ game.summary.body|linebreaksbr|safe }}</p>
         <hr/>
         {% if game.phrase_set.count > 0 %}
             {% for phrase in game.phrase_set.all %}
-                <p>{{ phrase.phrase }}</p>
+                <p>{{ phrase.phrase|linebreaksbr|safe }}</p>
                 <p style="text-align:right">by {{ phrase.joinedPlayerNames }} </p>
             {% endfor %}
         {% endif %}
