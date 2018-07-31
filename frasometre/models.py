@@ -29,3 +29,6 @@ class Phrase(models.Model):
 
     def joinedPlayerNames(self):
         return (', ').join(self.players.values().values_list('name', flat=True))
+
+    def getTime(self):
+        return self.time.strftime('%H:%M')

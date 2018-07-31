@@ -87,7 +87,9 @@
         {% if game.phrase_set.count > 0 %}
             {% for phrase in game.phrase_set.all %}
                 <p>{{ phrase.phrase|linebreaksbr|safe }}</p>
-                <p style="text-align:right">by {{ phrase.joinedPlayerNames }} </p>
+                <p style="text-align:right">by {{ phrase.joinedPlayerNames }} <br>
+                at {{ phrase.getTime }}
+                </p>
             {% endfor %}
         {% endif %}
     </div>
