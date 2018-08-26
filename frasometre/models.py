@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 
 
 # Create your models here.
@@ -13,9 +14,10 @@ class Player(models.Model):
 class Game(models.Model):
     image = models.ImageField(upload_to='images/frasometre/games', null=True, blank=True)
     title = models.TextField()
-    summary = models.TextField()
-    date = models.DateField()
-    players = models.ManyToManyField(Player, null=True, blank=True)
+    summary = models.TextField(default='')
+    date = models.DateField(default=models.DateTimeField)
+    players = models.ManyToManyField(Player, null=True, blank=True, related_name='players')
+    dungeonMasters = models.ManyToManyField(Player, null=True, blank=True, related_name='dungeon_masters')
 
     def __str__(self):
         return self.title
@@ -23,7 +25,7 @@ class Game(models.Model):
 
 class Phrase(models.Model):
     phrase = models.TextField()
-    time = models.DateTimeField()
+    time = models.DateTimeField(default=models.DateTimeField)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     players = models.ManyToManyField(Player)
 
