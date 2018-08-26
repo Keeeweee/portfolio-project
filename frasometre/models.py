@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.timezone import now
 
 
 # Create your models here.
@@ -25,7 +24,7 @@ class Game(models.Model):
 
 class Phrase(models.Model):
     phrase = models.TextField()
-    time = models.DateTimeField(default=models.DateTimeField)
+    time = models.DateTimeField()
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     players = models.ManyToManyField(Player)
 
