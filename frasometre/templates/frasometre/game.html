@@ -79,7 +79,9 @@
     <div class = "container">
         <h1 class="text-center pt-3">{{ game.title }}</h1>
         <p class="text-center">{{ game.date }}</p>
-        <img class="img-fluid" src="{{ game.image.url }}"/>
+        {% if game.image.url != None %}
+             <img class="img-fluid" src="{{ game.image.url }}"/>
+        {% endif %}
         <br/>
         <br/>
         <p>{{ game.summary.body|linebreaksbr|safe }}</p>
