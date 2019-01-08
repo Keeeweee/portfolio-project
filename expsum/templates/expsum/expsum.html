@@ -141,6 +141,10 @@
 
 	function lcm(int_array)
     {
+        if (math.min(int_array) <= 0)
+        {
+            return math.max(int_array);
+        }
 		var int_array_prime = int_array.slice();
 
 		while (!int_array_prime.reduce(function(a,b) { return (a === b) ? a : NaN; })) {
