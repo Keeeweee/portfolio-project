@@ -123,7 +123,20 @@
 
 	function expsum_f(n, y, m, d)
     {
-		return n/m + n**2/d + n**3/y
+        var sum = 0;
+        if (y !== 0)
+        {
+            sum += n**3/y;
+        }
+        if (d !== 0)
+        {
+            sum += n**2/d;
+        }
+        if (m !== 0)
+        {
+            sum += n/m;
+        }
+		return sum;
 	}
 
 	function lcm(int_array)
