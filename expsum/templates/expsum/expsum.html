@@ -10,7 +10,37 @@
 
     <title>Exponential Sums</title>
 
-        <style type="text/css">
+    <style type="text/css">
+
+        .slider {
+                  -webkit-appearance: none;
+                  width: 400px;
+                  height: 15px;
+                  border-radius: 5px;
+                  background: #d3d3d3;
+                  outline: none;
+                  opacity: 0.7;
+                  -webkit-transition: .2s;
+                  transition: opacity .2s;
+                }
+
+        .slider::-webkit-slider-thumb {
+                  -webkit-appearance: none;
+                  appearance: none;
+                  width: 25px;
+                  height: 25px;
+                  border-radius: 50%;
+                  background: #4CAF50;
+                  cursor: pointer;
+                }
+
+        .slider::-moz-range-thumb {
+                  width: 25px;
+                  height: 25px;
+                  border-radius: 50%;
+                  background: #4CAF50;
+                  cursor: pointer;
+                }
 
       /* Sticky footer styles
       -------------------------------------------------- */
@@ -82,10 +112,16 @@
         <div class="container" id="title">
             <h1 class="jumbotron-heading">Exponetial Sums Visualizer</h1>
             <h2 id="date_title"></h2>
+            <div id="svg_cont" style="text-align: center"></div>
+            <p>&nbsp;</p>
+            <label for="date_picker" class="label label-default" style="margin-right: 10px">Date:</label>
+            <input type="date" id="date_picker" onchange="onDateChange()">
+            <p>&nbsp;</p>
+            <label for="num_points_picker" class="label label-default" style="margin-right: 10px">Points:</label>
+            <input type="range" class="slider" id="num_points_picker" min="1" max="250" value="125" onchange="onChange()">
         </div>
         <div id="main"></div>
     </section>
-
 </main>
 
 <script>
@@ -94,8 +130,14 @@
      **/
     window.onpopstate = function(event)
     {
-        d3.select("#date_picker").property("value", pad(event.state.year) + '-' + pad(event.state.month) + '-' + pad(event.state.day));
-        draw();
+        let year = event.state.year,
+            month = event.state.month,
+            day = event.state.day,
+            n = getPointsCount();
+
+        initializeDefaults(year, month, day, n);
+
+        draw(year, month, day, n);
     };
 
     var animation_duration = 16000, // duration in ms
@@ -104,20 +146,48 @@
 
     var y = {{ year }},
         m = {{ month }},
-        d = {{ day }};
+        d = {{ day }},
+        n = lcm([d, m, y]);
 
-	d3.select("#main").append("div").attr("id", "svg_cont")
-		.style("text-align", "center");
+    initializeDefaults(y, m, d, n);
 
-	d3.select("#main").append("p").html("&nbsp;");
-	d3.select("#main")
-        .append("input")
-        .attr("type", "date")
-        .attr("id", "date_picker")
-        .attr("value", pad(y) + '-' + pad(m) + '-' + pad(d))
-        .on("change", draw);
+	draw(y, m, d, n);
 
-	draw();
+    function initializeDefaults(y, m, d, n)
+    {
+        d3.select("#date_picker").property("value", pad(y) + '-' + pad(m) + '-' + pad(d));
+        d3.select("#num_points_picker").property("value", n).property("max", n < 1000 ? 1000 : Math.floor(n*1.5));
+    }
+
+	function onChange()
+    {
+        let sel_date = d3.select("#date_picker").property("value");
+
+        let date = sel_date.split("-"),
+            y = Number(date[0]),
+            m = Number(date[1]),
+            d = Number(date[2]);
+
+        draw(y, m, d, getPointsCount());
+    }
+
+    function onDateChange()
+    {
+        let sel_date = d3.select("#date_picker").property("value");
+
+        let date = sel_date.split("-"),
+            y = Number(date[0]),
+            m = Number(date[1]),
+            d = Number(date[2]),
+            n = lcm([y, m, d]);
+
+        initializeDefaults(y, m, d, n);
+
+        history.pushState({"year": y, "month": m, "day": d}, "Exponential sum " + getDateString(d, m, y), {% url 'expsums' %} + getDateString(y, m, d));
+
+        draw(y, m, d, n);
+
+    }
 
     /**
      * Pad a number to the desired size for date display
@@ -142,6 +212,11 @@
     function getDateString(d, m, y)
     {
         return pad(d) + "/" + pad(m) + "/" + pad(y);
+    }
+
+    function getPointsCount()
+    {
+        return d3.select("#num_points_picker").property("value");
     }
 
     /**
@@ -183,10 +258,11 @@
             return math.max(int_array);
         }
 		var int_array_prime = int_array.slice();
-
-		while (!int_array_prime.reduce(function(a,b) { return (a === b) ? a : NaN; })) {
+        let count = 0;
+		while (count < 1000 && !int_array_prime.reduce(function(a,b) { return (a === b) ? a : NaN; })) {
 			var min_index = int_array_prime.indexOf(math.min(int_array_prime));
-			int_array_prime[min_index] += int_array[min_index]
+			int_array_prime[min_index] += int_array[min_index];
+            count++;
 		}
 		return int_array_prime[0]
 	}
@@ -194,21 +270,11 @@
     /**
      * Calculates and draws the Curve
      */
-	function draw()
+	async function draw(y, m, d, n)
     {
         var width = 300,
             height = 300;
 
-        var sel_date = d3.select("#date_picker").property("value");
-
-        var date = sel_date.split("-");
-        y = Number(date[0]);
-        m = Number(date[1]);
-        d = Number(date[2]);
-
-        history.pushState({"year": y, "month": m, "day": d}, "Exponential sum " + getDateString(d, m, y), {% url 'expsums' %} + getDateString(y, m, d));
-
-        {#d3.select("title").html("Exponential sum " + getDateString(d, m, y));#}
 	    d3.select("#date_title").html(getDateString(d, m, y));
 
         d3.select("#expsum").remove();
@@ -217,11 +283,9 @@
             .attr("height", height)
             .on("click", redraw);
 
-        var N = 2 * lcm([y, m, d]) + 1;
-
         var z = [];
         var z_cumsum = [];
-        for (i = 3; i < N + 3; i++) {
+        for (i = 1; i <= n; i++) {
             z.push(math.exp(math.multiply(2 * math.pi * expsum_f(i, y, m, d),
                 math.complex(0, 1))));
             z_cumsum.push(math.sum(z))
