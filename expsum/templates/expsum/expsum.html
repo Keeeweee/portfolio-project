@@ -89,21 +89,19 @@
 </main>
 
 <script>
-    function pad(num, size = 2)
+    /**
+     *  Set the datepicker to the year-month-day passed when pushed the state and draw again
+     **/
+    window.onpopstate = function(event)
     {
-        var s = num + "";
-        while (s.length < size) s = "0" + s;
-        return s;
-    }
-
-    function getDateString(d, m, y)
-    {
-        return pad(d) + "/" + pad(m) + "/" + pad(y);
-    }
+        d3.select("#date_picker").property("value", pad(event.state.year) + '-' + pad(event.state.month) + '-' + pad(event.state.day));
+        draw();
+    };
 
     var animation_duration = 16000, // duration in ms
 		line_width = 2,
 		line_color = "#004488";
+
     var y = {{ year }},
         m = {{ month }},
         d = {{ day }};
@@ -116,11 +114,44 @@
         .append("input")
         .attr("type", "date")
         .attr("id", "date_picker")
-        .attr("value", "20" + pad(y) + '-' + pad(m) + '-' + pad(d))
+        .attr("value", pad(y) + '-' + pad(m) + '-' + pad(d))
         .on("change", draw);
 
 	draw();
 
+    /**
+     * Pad a number to the desired size for date display
+     * @param num
+     * @param size
+     * @returns {string}
+     */
+    function pad(num, size = 2)
+    {
+        var s = num + "";
+        while (s.length < size) s = "0" + s;
+        return s;
+    }
+
+    /**
+     * Get padded Date for display
+     * @param d
+     * @param m
+     * @param y
+     * @returns {string}
+     */
+    function getDateString(d, m, y)
+    {
+        return pad(d) + "/" + pad(m) + "/" + pad(y);
+    }
+
+    /**
+     * Function used to calculate the values to plot
+     * @param n
+     * @param y
+     * @param m
+     * @param d
+     * @returns {number}
+     */
 	function expsum_f(n, y, m, d)
     {
         var sum = 0;
@@ -139,8 +170,14 @@
 		return sum;
 	}
 
+    /**
+     * Calculates the lcm multiple of an array of numbers
+     * @param int_array
+     * @returns {*}
+     */
 	function lcm(int_array)
     {
+        // Sanity check in case there's a 0
         if (math.min(int_array) <= 0)
         {
             return math.max(int_array);
@@ -154,6 +191,9 @@
 		return int_array_prime[0]
 	}
 
+    /**
+     * Calculates and draws the Curve
+     */
 	function draw()
     {
         var width = 300,
@@ -162,11 +202,13 @@
         var sel_date = d3.select("#date_picker").property("value");
 
         var date = sel_date.split("-");
-        y = Number(date[0]) % 100;
+        y = Number(date[0]);
         m = Number(date[1]);
         d = Number(date[2]);
 
-        d3.select("title").html("Exponential sum " + getDateString(d, m, y));
+        history.pushState({"year": y, "month": m, "day": d}, "Exponential sum " + getDateString(d, m, y), {% url 'expsums' %} + getDateString(y, m, d));
+
+        {#d3.select("title").html("Exponential sum " + getDateString(d, m, y));#}
 	    d3.select("#date_title").html(getDateString(d, m, y));
 
         d3.select("#expsum").remove();
@@ -174,7 +216,6 @@
             .attr("width", width)
             .attr("height", height)
             .on("click", redraw);
-
 
         var N = 2 * lcm([y, m, d]) + 1;
 
@@ -222,6 +263,9 @@
             .attr("d", line);
     }
 
+    /**
+     * Animates the drawn plot
+     */
 	function redraw()
     {
 		d3.select("path").interrupt();
@@ -237,6 +281,8 @@
     	.attr("stroke-dashoffset", 0);
 	}
 </script>
+
+<p style="margin-left: 10px">Credit where it's due: Inspired by <a href="https://www.johndcook.com/">John D. Cook</a>, from this <a href="https://www.johndcook.com/blog/2017/10/07/exponential-sums-make-pretty-pictures/">blog post.</a></p>
 
 <div id="footer" class="navbar-fixed-bottom text-light bg-dark">
     <div class="container text-center">
