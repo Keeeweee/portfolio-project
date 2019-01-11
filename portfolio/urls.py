@@ -22,6 +22,7 @@ import jobs.views
 import blog.urls
 import frasometre.urls
 import expsum.urls
+import matrix.urls
 
 urlpatterns = [
                 path('admin/', admin.site.urls),
@@ -29,4 +30,5 @@ urlpatterns = [
                 path('blog/', include(blog.urls)),
                 path('frasometre/', include(frasometre.urls)),
                 path('expsum/', include(expsum.urls)),
+                path('matrix/', include(matrix.urls)),
             ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

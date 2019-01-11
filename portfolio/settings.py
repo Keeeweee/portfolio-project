@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'frasometre.apps.FrasometreConfig',
     'expsum.apps.ExpsumConfig',
+    'matrix.apps.MatrixConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
