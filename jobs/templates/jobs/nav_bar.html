@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'home' %}">Marc Espín</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" href="https://twitter.com/EpsilonKeewee">Twitter</a>
+            <a class="nav-item nav-link" href="{% static 'CV_EN_Apr2018.pdf' %}">Resume</a>
+            <a class="nav-item nav-link {% if active_tab == 'blog' %} active {% endif %}" href="{% url 'allblogs' %}">Blog</a>
+            <a class="nav-item nav-link {% if active_tab == 'expsum' %} active {% endif %}" href="{% url 'expsums' %}">Exponential Sums</a>
+            <a class="nav-item nav-link {% if active_tab == 'matrix' %} active {% endif %}" href="{% url 'matrix' %}">Matrix</a>
+        </div>
+    </div>
+</nav>
