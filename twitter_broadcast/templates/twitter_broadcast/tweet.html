@@ -1,0 +1,6 @@
+<div class="text-justify rounded border border-dark px-2 py-2">
+    {% if tweet.header != None %}
+        <p>{{ tweet.header }}</p>
+    {% endif %}
+    <p>{{ tweet.text|safe }}</p>
+</div>
