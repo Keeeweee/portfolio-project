@@ -23,6 +23,7 @@ import blog.urls
 import frasometre.urls
 import expsum.urls
 import matrix.urls
+import twitter_broadcast.urls
 
 urlpatterns = [
                 path('admin/', admin.site.urls),
@@ -31,4 +32,5 @@ urlpatterns = [
                 path('frasometre/', include(frasometre.urls)),
                 path('expsum/', include(expsum.urls)),
                 path('matrix/', include(matrix.urls)),
+                path('twitter-broadcast/', include(twitter_broadcast.urls)),
             ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

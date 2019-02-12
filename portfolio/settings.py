@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'frasometre.apps.FrasometreConfig',
     'expsum.apps.ExpsumConfig',
     'matrix.apps.MatrixConfig',
+    'twitter_broadcast.apps.TwitterBroadcastConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
