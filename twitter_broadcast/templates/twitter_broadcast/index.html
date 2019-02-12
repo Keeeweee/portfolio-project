@@ -58,5 +58,21 @@
 
 <body style="margin: 0; overflow: hidden;">
 <h1>Welcome to Twitter Broadcaster!</h1>
+
+<main role="main">
+    <div class = "container">
+        {% for tweet in tweets %}
+            {% include "twitter_broadcast/tweet.html" with tweet=tweet %}
+            <br/>
+            {#            <a href="/blog/{{ blog.id }}" ><h3>{{ blog.title|safe }}</h3></a>#}
+{#            {{ blog.pub_date_pretty }}#}
+{#            <br/>#}
+{#            <img class="rounded img-fluid" src="{{ blog.image.url }}" height="200" width="200"/>#}
+{#            <br/>#}
+{#            <p>{{ blog.summary|safe }}</p>#}
+{#            <br/>#}
+        {% endfor %}
+    </div>div>
+</main>
 </body>
 </html>
