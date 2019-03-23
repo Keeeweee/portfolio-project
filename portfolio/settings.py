@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'expsum.apps.ExpsumConfig',
     'matrix.apps.MatrixConfig',
     'twitter_broadcast.apps.TwitterBroadcastConfig',
+    'smart_rockets.apps.SmartRocketsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
