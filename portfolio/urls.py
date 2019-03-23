@@ -24,7 +24,7 @@ import frasometre.urls
 import expsum.urls
 import matrix.urls
 import twitter_broadcast.urls
-
+import smart_rockets.urls
 urlpatterns = [
                 path('admin/', admin.site.urls),
                 path('', jobs.views.home, name="home"),
@@ -33,4 +33,5 @@ urlpatterns = [
                 path('expsum/', include(expsum.urls)),
                 path('matrix/', include(matrix.urls)),
                 path('twitter-broadcast/', include(twitter_broadcast.urls)),
+                path('smart-rockets/', include(smart_rockets.urls)),
             ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
