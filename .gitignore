@@ -21,6 +21,7 @@ db.sqlite3
 
 # User-specific stuff
 .idea/
+env/
 
 # End of https://www.gitignore.io/api/django,pycharm
 
