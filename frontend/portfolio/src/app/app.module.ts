@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {JobsComponent} from "./jobs/jobs.component";
 import { FooterComponent } from './footer/footer.component';
+import { JobComponent } from './jobs/job/job.component';
+import { MatrixComponent } from './matrix/matrix.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JobsComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    JobComponent,
+    MatrixComponent
   ],
   imports: [
     // HttpModule,

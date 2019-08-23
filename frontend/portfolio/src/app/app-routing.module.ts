@@ -1,12 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {JobsComponent} from "./jobs/jobs.component";
+import {MatrixComponent} from "./matrix/matrix.component";
 
 
-const routes: Routes = [    {
+const routes: Routes = [
+    {
         path:"jobs",
-        component: JobsComponent,
+        component: JobsComponent
     },
+  {
+    path: "",
+    component: JobsComponent
+  },
+  {
+    path: "matrix",
+    component: MatrixComponent
+  }
     // {
     //     path:"**",
     //     component: PagenotfoundComponent,
