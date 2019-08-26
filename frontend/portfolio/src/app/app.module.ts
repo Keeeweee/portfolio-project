@@ -8,6 +8,7 @@ import {JobsComponent} from "./jobs/jobs.component";
 import { FooterComponent } from './footer/footer.component';
 import { JobComponent } from './jobs/job/job.component';
 import { MatrixComponent } from './matrix/matrix.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MatrixComponent } from './matrix/matrix.component';
   imports: [
     // HttpModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
