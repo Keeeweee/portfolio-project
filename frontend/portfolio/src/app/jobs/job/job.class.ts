@@ -16,4 +16,14 @@ export class Job {
     this.title = pTitle;
     this.summary = pSummary;
   }
+
+  public static fromJson(json) {
+    return new Job( json.pk,
+                    json.fields.image,
+                    json.fields.company,
+                    json.fields.start,
+                    json.fields.end,
+                    json.fields.title,
+                    json.fields.summary);
+  }
 }
