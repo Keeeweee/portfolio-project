@@ -28,6 +28,7 @@ import smart_rockets.urls
 urlpatterns = [
                 path('admin/', admin.site.urls),
                 path('', jobs.views.home, name="home"),
+                path('jobs/api/jobs', jobs.views.jobApi),
                 path('blog/', include(blog.urls)),
                 path('frasometre/', include(frasometre.urls)),
                 path('expsum/', include(expsum.urls)),
