@@ -17,8 +17,7 @@ export class JobService {
   }
 
   getJobs(): Observable<Job[]> {
-    return this.http.get<any>(this.jobsUrl).pipe(map(jobs => JSON.parse(jobs).map(job => Job.fromJson(job))))
-                                           .pipe(catchError(this.handleError<Job[]>('getJobs', [])));
+    return this.http.get<Job[]>(this.jobsUrl).pipe(catchError(this.handleError<Job[]>('getJobs', [])));
   }
 
   getJob(id: number): Observable<Job> {
