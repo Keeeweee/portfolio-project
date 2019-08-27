@@ -19,6 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 import jobs.views
+import jobs.urls
 import blog.urls
 import frasometre.urls
 import expsum.urls
@@ -28,7 +29,7 @@ import smart_rockets.urls
 urlpatterns = [
                 path('admin/', admin.site.urls),
                 path('', jobs.views.home, name="home"),
-                path('jobs/api/jobs', jobs.views.jobApi),
+                path('jobs/', include(jobs.urls)),
                 path('blog/', include(blog.urls)),
                 path('frasometre/', include(frasometre.urls)),
                 path('expsum/', include(expsum.urls)),
