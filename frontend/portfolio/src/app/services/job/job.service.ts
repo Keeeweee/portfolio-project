@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Job} from "../../jobs/job/job.class";
 import {Observable, of} from "rxjs";
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError, map, tap} from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
+import {catchError} from 'rxjs/operators';
 import {AppSettings} from "../../app.settings";
 
 
@@ -17,11 +17,12 @@ export class JobService {
   }
 
   getJobs(): Observable<Job[]> {
-    return this.http.get<Job[]>(this.jobsUrl).pipe(catchError(this.handleError<Job[]>('getJobs', [])));
+    const url = `${this.jobsUrl}.json`;
+    return this.http.get<Job[]>(url).pipe(catchError(this.handleError<Job[]>('getJobs', [])));
   }
 
   getJob(id: number): Observable<Job> {
-    const url = `${this.jobsUrl}/${id}`;
+    const url = `${this.jobsUrl}/${id}.json`;
     return this.http.get<Job>(url).pipe(catchError(this.handleError<Job>(`getjob id=${id}`)))
   }
 
