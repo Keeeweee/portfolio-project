@@ -1,15 +1,29 @@
-from django.http import JsonResponse
-from django.core import serializers
+from rest_framework import generics
+from jobs.permissions import IsAdminUserOrReadOnly
 
-from jobs.serializers import JobSerializer
+from jobs.serializers import JobSerializer, UserSerializer
 from .models import Job
 
-
-def allJobs(request):
-    jobs = Job.objects.all()
-    return JsonResponse(JobSerializer(jobs, many=True).data, safe=False)
+from django.contrib.auth.models import User
 
 
-def job(request, job_id):
-    job = Job.objects.get(pk=job_id)
-    return JsonResponse(JobSerializer(job).data, safe=False)
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class JobList(generics.ListCreateAPIView):
+    permission_classes = [IsAdminUserOrReadOnly]
+    queryset = Job.objects.all()
+    serializer_class = JobSerializer
+
+
+class JobDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAdminUserOrReadOnly]
+    queryset = Job.objects.all()
+    serializer_class = JobSerializer
